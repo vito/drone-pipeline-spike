@@ -8,4 +8,5 @@ env:
 
 script:
   - env
+  - echo 1
   - ./shipit.sh
