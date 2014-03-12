@@ -8,5 +8,4 @@ env:
 
 script:
   - env
-  - find .
   - ./shipit.sh
