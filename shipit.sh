@@ -28,11 +28,13 @@ git remote add deploy git@github.com:vito/drone-pipeline-spike.git
 case "$DRONE_BRANCH" in
   master)
     run_integration_tests
-    git push deploy HEAD:refs/heads/passed-integration
+    git commit --amend --reset-author -C HEAD
+    git push -f deploy HEAD:refs/heads/passed-integration
     ;;
   passed-integration)
     deploy
-    git push deploy HEAD:refs/heads/passed-deploy
+    git commit --amend --reset-author -C HEAD
+    git push -f deploy HEAD:refs/heads/passed-deploy
     ;;
   passed-deploy)
     run_system_tests
