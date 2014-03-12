@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 
 function run_integration_tests() {

@@ -9,4 +9,4 @@ env:
 script:
   - env
   - find .
-  - sh shipit.sh
+  - ./shipit.sh
