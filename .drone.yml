@@ -1,14 +1,20 @@
 ---
-image: mischief/docker-golang
+image: cloudfoundry/diego-pipeline
 
 env:
   - GOROOT=/usr/local/go
   - GOPATH=/var/cache/drone
   - PATH=$GOPATH/bin:$PATH
+  - BOSH_USER={{BOSH_USER}}
+  - BOSH_PASSWORD={{BOSH_PASSWORD}}
 
 script:
   - env
-  - ./shipit.sh {{SOME_SECRET}}
+  - ./shipit.sh
+
+cache:
+  - .blobs
+  - .final_builds
 
 deploy:
   git:
