@@ -10,11 +10,13 @@ env:
 
 script:
   - env
+  - ln -s /tmp/release-blobs .blobs
+  - ln -s /tmp/release-final-builds .final_builds
   - ./shipit.sh
 
 cache:
-  - .blobs
-  - .final_builds
+  - /tmp/release-blobs
+  - /tmp/release-final-builds
 
 deploy:
   git:
