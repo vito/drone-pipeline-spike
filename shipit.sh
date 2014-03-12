@@ -2,6 +2,8 @@
 
 set -e
 
+git rev-parse --abbrev-ref HEAD
+
 function run_integration_tests() {
   echo RUNNING INTEGRATION TESTS
 }
