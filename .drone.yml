@@ -7,4 +7,5 @@ env:
   - PATH=$GOPATH/bin:$PATH
 
 script:
+  - echo 1
   - env
