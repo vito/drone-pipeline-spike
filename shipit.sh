@@ -1,7 +1,5 @@
 set -e
 
-env
-
 function run_integration_tests() {
   echo RUNNING INTEGRATION TESTS
 }
