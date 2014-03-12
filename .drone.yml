@@ -6,5 +6,4 @@ env:
   - GOPATH=/var/cache/drone
   - PATH=$GOPATH/bin:$PATH
 
-script:
-  - env
+script: shipit.sh
