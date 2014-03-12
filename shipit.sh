@@ -20,14 +20,16 @@ if [ ! -z "$DRONE_PR" ]; then
   exit 0
 fi
 
+git remote add deploy git@github.com:vito/drone-pipeline-spike.git
+
 case "$DRONE_BRANCH" in
   master)
     run_integration_tests
-    git push origin passed-integration
+    git push deploy passed-integration
     ;;
   passed-integration)
     deploy
-    git push origin passed-deploy
+    git push deploy passed-deploy
     ;;
   passed-deploy)
     run_system_tests
