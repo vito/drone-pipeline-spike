@@ -2,9 +2,6 @@
 
 set -e
 
-git rev-parse --abbrev-ref HEAD
-git branch
-
 function run_integration_tests() {
   echo RUNNING INTEGRATION TESTS
 }
@@ -23,18 +20,12 @@ if [ ! -z "$DRONE_PR" ]; then
   exit 0
 fi
 
-git remote add deploy git@github.com:vito/drone-pipeline-spike.git
-
 case "$DRONE_BRANCH" in
   master)
     run_integration_tests
-    git commit --amend --reset-author -C HEAD
-    git push -f deploy HEAD:refs/heads/passed-integration
     ;;
   passed-integration)
     deploy
-    git commit --amend --reset-author -C HEAD
-    git push -f deploy HEAD:refs/heads/passed-deploy
     ;;
   passed-deploy)
     run_system_tests

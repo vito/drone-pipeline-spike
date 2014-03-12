@@ -8,5 +8,12 @@ env:
 
 script:
   - env
-  - echo 1
   - ./shipit.sh
+
+deploy:
+  git:
+    target: git@github.com:vito/drone-pipeline-spike.git
+    force: true
+    branches:
+      master: passed-integration
+      passed-integration: passed-deploy
