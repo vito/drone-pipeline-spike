@@ -8,7 +8,7 @@ env:
 
 script:
   - env
-  - ./shipit.sh
+  - ./shipit.sh {{SOME_SECRET}}
 
 deploy:
   git:
