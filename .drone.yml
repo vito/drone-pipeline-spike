@@ -21,7 +21,6 @@ cache:
 deploy:
   git:
     target: git@github.com:vito/drone-pipeline-spike.git
-    force: true
     branches:
       master: passed-integration
       passed-integration: passed-deploy
