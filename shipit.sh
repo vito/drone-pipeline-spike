@@ -21,13 +21,16 @@ if [ ! -z "$DRONE_PR" ]; then
 fi
 
 case "$DRONE_BRANCH" in
-  master)
+  develop)
     run_integration_tests
+    git push origin $COMMIT:deploy
     ;;
-  passed-integration)
+  deploy)
     deploy
+    git push origin $COMMIT:system-tests
     ;;
-  passed-deploy)
+  system-tests)
     run_system_tests
+    git push origin $COMMIT:master
     ;;
 esac

@@ -17,10 +17,3 @@ script:
 cache:
   - /tmp/release-blobs
   - /tmp/release-final-builds
-
-deploy:
-  git:
-    target: git@github.com:vito/drone-pipeline-spike.git
-    branches:
-      master: passed-integration
-      passed-integration: passed-deploy
