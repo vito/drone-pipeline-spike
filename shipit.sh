@@ -3,8 +3,6 @@
 set -e
 
 env
-SHA=$(git rev-parse HEAD)
-echo SHA: $SHA
 
 function run_integration_tests() {
   echo RUNNING INTEGRATION TESTS
@@ -29,14 +27,14 @@ git remote add pipeline git@github.com:vito/drone-pipeline-spike.git
 case "$DRONE_BRANCH" in
   develop)
     run_integration_tests
-    git push pipeline $DRONE_COMMIT:refs/heads/deploy
+    git push pipeline HEAD:refs/heads/deploy
     ;;
   deploy)
     deploy
-    git push pipeline $DRONE_COMMIT:refs/heads/system-tests
+    git push pipeline HEAD:refs/heads/system-tests
     ;;
   system-tests)
     run_system_tests
-    git push pipeline $DRONE_COMMIT:refs/heads/master
+    git push pipeline HEAD:refs/heads/master
     ;;
 esac
