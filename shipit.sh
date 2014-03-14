@@ -25,14 +25,14 @@ git remote add pipeline git@github.com:vito/drone-pipeline-spike.git
 case "$DRONE_BRANCH" in
   develop)
     run_integration_tests
-    git push pipeline $COMMIT:deploy
+    git push pipeline $COMMIT:refs/heads/deploy
     ;;
   deploy)
     deploy
-    git push pipeline $COMMIT:system-tests
+    git push pipeline $COMMIT:refs/heads/system-tests
     ;;
   system-tests)
     run_system_tests
-    git push pipeline $COMMIT:master
+    git push pipeline $COMMIT:refs/heads/master
     ;;
 esac
